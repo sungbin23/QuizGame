@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지식왕 도전 Ultimate</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 폭죽 연출용 캔버스 -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="app-container" id="main-card">
+        <!-- 시작 화면 -->
+        <div id="start-screen" class="screen active">
+            <h1 class="title">👑 지식왕 도전</h1>
+            <p class="subtitle">다양한 분야의 상식 퀴즈를 탐험하세요!</p>
+            
+            <!-- 랭킹 전광판 -->
+            <div class="high-score-box">
+                <span>🏆 역대 최고 점수: <strong id="top-score">0</strong>점</span>
+            </div>
+
+            <!-- 게임 모드 선택 -->
+            <div class="mode-grid">
+                <button id="mode-normal" class="mode-card">
+                    <h3>🟢 일반 모드</h3>
+                    <p>시간 제한 없이 차분하게 풀기</p>
+                </button>
+                <button id="mode-speed" class="mode-card">
+                    <h3>⚡ 스피드 퀴즈</h3>
+                    <p>문제당 15초 타임어택</p>
+                </button>
+                <button id="mode-survival" class="mode-card highlight-red">
+                    <h3>💀 서바이벌</h3>
+                    <p>단 한 번 틀리면 즉시 게임 오버!</p>
+                </button>
+                <button id="mode-timeattack" class="mode-card highlight-orange">
+                    <h3>⏱️ 60초 타임어택</h3>
+                    <p>60초 동안 최대한 많은 문제를!</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- 퀴즈 진행 화면 -->
+        <div id="quiz-screen" class="screen">
+            <div class="header">
+                <span id="progress-text">1 / 12</span>
+                <span id="timer-display" class="timer-badge hidden">⏱ <span id="time-left">15</span>초</span>
+                <span id="score-text">점수: 0</span>
+            </div>
+
+            <div class="status-bar">
+                <span class="category-badge" id="category-text">카테고리</span>
+                <span id="combo-text" class="combo-badge hidden">🔥 2연속 정답!</span>
+                <span id="life-text" class="life-badge hidden">❤️ 목숨: 1</span>
+            </div>
+
+            <h2 id="question-text">문제 내용이 여기에 표시됩니다.</h2>
+            
+            <button id="hint-btn" class="hint-btn">💡 힌트 사용 (-2점)</button>
+            
+            <div id="options-container" class="options-grid"></div>
+            
+            <div id="feedback-container" class="hidden">
+                <h3 id="feedback-title">정답입니다!</h3>
+                <p id="feedback-desc">해설 내용</p>
+                <button id="next-btn" class="primary-btn">다음 문제 ➔</button>
+            </div>
+        </div>
+
+        <!-- 결과 화면 -->
+        <div id="result-screen" class="screen">
+            <h1 id="result-title">🏆 퀴즈 완료!</h1>
+            <div class="result-box">
+                <h2 id="final-score">0점</h2>
+                <p id="new-record-msg" class="new-record hidden">🎉 새로운 최고 기록 달성!</p>
+                <p id="final-stats">정답 개수: 0 / 12 (0%)</p>
+            </div>
+            <button id="restart-btn" class="primary-btn">메인 화면으로 돌아가기</button>
+        </div>
+    </div>
+
+    <script src="quiz-data.js"></script>
+    <script src="quiz-game.js"></script>
+</body>
+</html>
